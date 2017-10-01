@@ -13,17 +13,28 @@
     <script type="text/javascript">
         //Score and location visits
         var score = 0;
+		var currentLoc = 0;
         var locNorth = false;
         var locSouth = false;
         var locEast = false;
         var locWest = false;
+		
+		function init(){
+			look();
+			}
 
         //North
-        function btnNorth() {
-            alert("You are at security, they say they saw your dog but can't say where he is for sure since its a circular building...");
-            document.getElementById("maintext").value = "Now what?";
+			function btnNorth() {
+            if (currentLoc === 0) {
+               currentLoc = 1;
+            } else {
+				if (currentLoc === 1) {
+					currentLoc = 2;
+					}
+				}
+            look();
 			//If statement for visiting once
-            if (locNorth == false) {
+			if (locNorth == false) {
 
                 score += 5;
                 document.getElementById("scorebox").value = "Score:" + score;
@@ -32,49 +43,53 @@
                 document.getElementById("scorebox").value = "Score:" + score;
             }
         }
-        //South
-        function btnSouth() {
-            alert("You leave the building. Try again.");
-            document.getElementById("maintext").value = "Get back inside and find your dog!";
+			function btnSouth() {
+            if (currentLoc === 0) {
+               currentLoc = 7;
+            } else {
+				if (currentLoc === 2) {
+					currentLoc = 1;
+					}
+				}
+            look();
 			//If statement for visiting once
-            if (locSouth == false) {
+			if (locNorth == false) {
 
                 score += 5;
                 document.getElementById("scorebox").value = "Score:" + score;
-                locSouth = true;
+                locNorth = true;
             } else {
                 document.getElementById("scorebox").value = "Score:" + score;
             }
         }
-        //East		
-        function btnEast() {
-            alert("You head down to the chemistry lab and hear barking");
-            document.getElementById("maintext").value = "You almost got him!";
-			//If statement for visiting once
-            if (locEast == false) {
-
-                score += 5;
-                document.getElementById("scorebox").value = "Score:" + score;
-                locEast = true;
-            } else {
-                document.getElementById("scorebox").value = "Score:" + score;
-            }
-        }
-        //West			
-        function btnWest() {
-            alert("Donnelly! You found your dog, sitting by the fashion lab.");
-            document.getElementById("maintext").value = "Congrats!";
-			//If statement for visiting once
-            if (locWest == false) {
-
-                score += 5;
-                document.getElementById("scorebox").value = "Score:" + score;
-                locWest = true;
-            } else {
-                document.getElementById("scorebox").value = "Score:" + score;
-            }
-        }
-    </script>
+		
+		
+		function look() {
+			var desc = "";
+				switch(currentLoc) {
+				case 0: desc = "You enter Donnelly Hall in a panic realizing your dog, Donnelly, has gotten loose and made his way to his favorite building. You must find him!";
+					break;
+				case 1: desc = "You are at security, they say they saw your dog but can't say where he is for sure since its a circular building...";
+					break;
+				case 2: desc = " You rush to the back room to check the security cameras and see your dog running in circles";
+					break;
+				case 3: desc =	" You are standing by the entrance scanning the room";
+					break;
+				case 4: desc = "You leave the building. Try again.";
+					break;
+				case 5: desc =	"You head down to the chemistry lab and hear barking";
+					break;
+				case 6: desc = "Donnelly! You found your dog, sitting by the fashion lab.";
+					break;
+				case 7: desc = "That is not a valid move";
+				}
+				displayMessage(desc);
+			}
+				function displayMessage(msg) {
+					var target = document.getElementById("maintext");
+					target.value = msg + "\n\n" + target.value;
+				}
+	</script>
     <style>
         .footer {
             color: purple;
