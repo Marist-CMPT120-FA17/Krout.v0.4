@@ -14,11 +14,13 @@
         //Score and location visits
         var score = 0;
 		var currentLoc = 0;
-        var locNorth = false;
-        var locSouth = false;
-        var locEast = false;
-        var locWest = false;
 		
+		var VisitedLoc1 = false;
+		var VisitedLoc2 = false;
+		var VisitedLoc3 = false;
+		var VisitedLoc4 = false;
+		var VisitedLoc5 = false;
+		var VisitedLoc6 = false;
 		function init(){
 			look();
 			}
@@ -27,42 +29,47 @@
 			function btnNorth() {
             if (currentLoc === 0) {
                currentLoc = 1;
+			   look();
             } else {
 				if (currentLoc === 1) {
-					currentLoc = 2;
-					}
+					currentLoc = 2;		
+					look();
+				} else {
+					currentLoc = 7;
 				}
-            look();
-			//If statement for visiting once
-			if (locNorth == false) {
+			}
+			look();
+			if (VisitedLoc1 == false) {
 
                 score += 5;
                 document.getElementById("scorebox").value = "Score:" + score;
-                locNorth = true;
+                VisitedLoc1 = true;
             } else {
                 document.getElementById("scorebox").value = "Score:" + score;
-            }
-        }
-			function btnSouth() {
+            }	
+      }
+		function btnSouth() {
             if (currentLoc === 0) {
                currentLoc = 7;
+			   look();
             } else {
-				if (currentLoc === 2) {
-					currentLoc = 1;
-					}
+				if (currentLoc === 1) {
+					currentLoc = 0;		
+					look();
+				} else {
+					currentLoc = 7;
 				}
-            look();
-			//If statement for visiting once
-			if (locNorth == false) {
+			}
+			look();
+			if (VisitedLoc1 == false) {
 
                 score += 5;
                 document.getElementById("scorebox").value = "Score:" + score;
-                locNorth = true;
+                VisitedLoc1 = true;
             } else {
                 document.getElementById("scorebox").value = "Score:" + score;
-            }
-        }
-		
+            }	
+      }
 		
 		function look() {
 			var desc = "";
