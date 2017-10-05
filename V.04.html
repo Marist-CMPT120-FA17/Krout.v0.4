@@ -13,168 +13,179 @@
     <script type="text/javascript">
         //Score and location visits
         var score = 0;
-		var currentLoc = 0;
-		
-		var VisitedLoc1 = false;
-		var VisitedLoc2 = false;
-		var VisitedLoc3 = false;
-		var VisitedLoc4 = false;
-		var VisitedLoc5 = false;
-		var VisitedLoc6 = false;
-		function init(){
-			look();
-			}
+        var currentLoc = 0;
+
+        var VisitedLoc1 = false;
+        var VisitedLoc2 = false;
+        var VisitedLoc3 = false;
+        var VisitedLoc4 = false;
+        var VisitedLoc5 = false;
+        var VisitedLoc6 = false;
+
+        function init() {
+            look();
+        }
 
         //North
-			function btnNorth() {
+        function btnNorth() {
             if (currentLoc === 0) {
-               currentLoc = 1;
-			   look();
+                currentLoc = 1;
+                look();
             } else {
-				if (currentLoc === 1) {
-					currentLoc = 2;		
-					look();
-			} else {
-				if (currentLoc === 4) {
-					currentLoc = 0;
-					look();
-					}
-			}
-			}
-			look();
-			if (VisitedLoc1 == false) {
+                if (currentLoc === 1) {
+                    currentLoc = 2;
+                    look();
+                } else {
+                    if (currentLoc === 4) {
+                        currentLoc = 0;
+                        look();
+                    }
+                }
+            }
+            look();
+            if (VisitedLoc1 == false) {
                 score += 5;
                 document.getElementById("scorebox").value = "Score:" + score;
                 VisitedLoc1 = true;
             } else {
                 document.getElementById("scorebox").value = "Score:" + score;
-            }	
-      }
-		//South
-		function btnSouth() {
+            }
+        }
+        //South
+        function btnSouth() {
             if (currentLoc === 2) {
-               currentLoc = 1;
-			   look();
+                currentLoc = 1;
+                look();
             } else {
-				if (currentLoc === 1) {
-					currentLoc = 0;		
-					look();
-				} else {
-					if (currentLoc === 0) {
-						currentLoc = 4;
-						look();
-						}
-			}
-			}
-			look();
-			if (VisitedLoc2 == false) {
+                if (currentLoc === 1) {
+                    currentLoc = 0;
+                    look();
+                } else {
+                    if (currentLoc === 0) {
+                        currentLoc = 4;
+                        look();
+                    }
+                }
+            }
+            look();
+            if (VisitedLoc2 == false) {
 
                 score += 5;
                 document.getElementById("scorebox").value = "Score:" + score;
                 VisitedLoc1 = true;
             } else {
                 document.getElementById("scorebox").value = "Score:" + score;
-            }	
-      }
-	  
-	  	//East
-		function btnEast() {
+            }
+        }
+
+        //East
+        function btnEast() {
             if (currentLoc === 0) {
-               currentLoc = 3;
-			   look();
+                currentLoc = 3;
+                look();
             } else {
-				if (currentLoc === 3) {
-					currentLoc = 7;		
-					look();
-			} else {
-				if (currentLoc === 7) {
-					currentLoc = 8;
-					look();
-			} else {
-				if (currentLoc === 5) {
-					currentLoc = 0;
-					look();
-					}
-				}
-			}
-			}
-			look();
-			if (VisitedLoc3 == false) {
+                if (currentLoc === 3) {
+                    currentLoc = 7;
+                    look();
+                } else {
+                    if (currentLoc === 7) {
+                        currentLoc = 8;
+                        look();
+                    } else {
+                        if (currentLoc === 5) {
+                            currentLoc = 0;
+                            look();
+                        }
+                    }
+                }
+            }
+            look();
+            if (VisitedLoc3 == false) {
 
                 score += 5;
                 document.getElementById("scorebox").value = "Score:" + score;
                 VisitedLoc1 = true;
             } else {
                 document.getElementById("scorebox").value = "Score:" + score;
-            }	
-      }
-		//West
-		function btnWest() {
+            }
+        }
+        //West
+        function btnWest() {
             if (currentLoc === 0) {
-               currentLoc = 5;
-			   look();
+                currentLoc = 5;
+                look();
             } else {
-				if (currentLoc === 5) {
-					currentLoc = 6;		
-					look();
-			} else {
-				if (currentLoc === 3) {
-					currentLoc = 0;
-					look();
-			} else {
-				if (currentLoc === 7) {
-					currentLoc = 3;
-					look();
-			} else { 
-				if (currentLoc === 8) {
-					currentLoc = 7;
-					look();
-					}
-					}
-				}	
-			}	
-			}
-			
-			look();
-			if (VisitedLoc4 == false) {
+                if (currentLoc === 5) {
+                    currentLoc = 6;
+                    look();
+                } else {
+                    if (currentLoc === 3) {
+                        currentLoc = 0;
+                        look();
+                    } else {
+                        if (currentLoc === 7) {
+                            currentLoc = 3;
+                            look();
+                        } else {
+                            if (currentLoc === 8) {
+                                currentLoc = 7;
+                                look();
+                            }
+                        }
+                    }
+                }
+            }
+
+            look();
+            if (VisitedLoc4 == false) {
 
                 score += 5;
                 document.getElementById("scorebox").value = "Score:" + score;
                 VisitedLoc1 = true;
             } else {
                 document.getElementById("scorebox").value = "Score:" + score;
-            }	
-      }
-		
-		
-		function look() {
-			var desc = "";
-				switch(currentLoc) {
-				case 0: desc = "You enter Donnelly Hall in a panic realizing your dog, Donnelly, has gotten loose and made his way to his favorite building. You must find him!";
-					break;
-				case 1: desc = "You are at security, they say they saw your dog but can't say where he is for sure since its a circular building...";
-					break;
-				case 2: desc = " You rush to the back room to check the security cameras and see your dog running in circles";
-					break;
-				case 3: desc =	" You are the fashion lab and see nothing but clothes.";
-					break;
-				case 4: desc = "You leave the building. Try again.";
-					break;
-				case 5: desc =	"You head down to the chemistry lab and hear barking";
-					break;
-				case 6: desc = "Donnelly! You found your dog, sitting by the bathroom.";
-					break;
-				case 7: desc = "You are at the DN Cafe, maybe Donnelly was attracted to the food?";
-					break;
-				case 8: desc = "Nothing but subs in here...";
-				}
-				displayMessage(desc);
-			}
-				function displayMessage(msg) {
-					var target = document.getElementById("maintext");
-					target.value = msg + "\n\n" + target.value;
-				}
-	</script>
+            }
+        }
+
+
+        function look() {
+            var desc = "";
+            switch (currentLoc) {
+                case 0:
+                    desc = "You enter Donnelly Hall in a panic realizing your dog, Donnelly, has gotten loose and made his way to his favorite building. You must find him!";
+                    break;
+                case 1:
+                    desc = "You are at security, they say they saw your dog but can't say where he is for sure since its a circular building...";
+                    break;
+                case 2:
+                    desc = " You rush to the back room to check the security cameras and see your dog running in circles";
+                    break;
+                case 3:
+                    desc = " You are the fashion lab and see nothing but clothes.";
+                    break;
+                case 4:
+                    desc = "You leave the building. Try again.";
+                    break;
+                case 5:
+                    desc = "You head down to the chemistry lab and hear barking";
+                    break;
+                case 6:
+                    desc = "Donnelly! You found your dog, sitting by the bathroom.";
+                    break;
+                case 7:
+                    desc = "You are at the DN Cafe, maybe Donnelly was attracted to the food?";
+                    break;
+                case 8:
+                    desc = "Nothing but subs in here...";
+            }
+            displayMessage(desc);
+        }
+
+        function displayMessage(msg) {
+            var target = document.getElementById("maintext");
+            target.value = msg + "\n\n" + target.value;
+        }
+    </script>
     <style>
         .footer {
             color: purple;
