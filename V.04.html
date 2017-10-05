@@ -25,6 +25,25 @@
         function init() {
             look();
         }
+		function btnEnter_click() {
+			var userText = document.getElementById("txtCommand").value;
+			var response = "";
+		if (userText === "North") {
+			response = btnNorth()
+		} else {
+			if (userText === "South") {
+				response = btnSouth()
+		} else {
+			if (userText === "East") {
+				response = btnEast()
+		} else {
+			if (userText === "West") {
+				response = btnWest()
+				}
+			}	
+		}
+		}
+		}
 
         //North
         function btnNorth() {
