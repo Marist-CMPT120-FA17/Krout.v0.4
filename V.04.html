@@ -14,13 +14,14 @@
         //Score and location visits
         var score = 0;
         var currentLoc = 0;
-
-        var VisitedLoc1 = false;
-        var VisitedLoc2 = false;
-        var VisitedLoc3 = false;
-        var VisitedLoc4 = false;
-        var VisitedLoc5 = false;
-        var VisitedLoc6 = false;
+		
+		var VisitedLoc0 = 0;
+        var VisitedLoc1 = 0;
+        var VisitedLoc2 = 0;
+        var VisitedLoc3 = 0;
+        var VisitedLoc4 = 0;
+        var VisitedLoc5 = 0;
+        var VisitedLoc6 = 0;
 
         function init() {
             look();
@@ -28,19 +29,21 @@
 		function btnEnter_click() {
 			var userText = document.getElementById("txtCommand").value;
 			var response = "";
-		if (userText === "North") {
+		if (userText === "N") {
 			response = btnNorth()
 		} else {
-			if (userText === "South") {
+			if (userText === "S") {
 				response = btnSouth()
 		} else {
-			if (userText === "East") {
+			if (userText === "E") {
 				response = btnEast()
 		} else {
-			if (userText === "West") {
+			if (userText === "W") {
 				response = btnWest()
-				}
-			}	
+		} else {
+			alert("Valid commands are N,S,E,W");
+		}
+		}
 		}
 		}
 		}
@@ -50,10 +53,13 @@
             if (currentLoc === 0) {
                 currentLoc = 1;
                 look();
+				document.getElementById("btnEast").disabled= true;
+				document.getElementById("btnWest").disabled= true;
             } else {
                 if (currentLoc === 1) {
                     currentLoc = 2;
                     look();
+					document.getElementById("btnNorth").disabled=true;
                 } else {
                     if (currentLoc === 4) {
                         currentLoc = 0;
@@ -61,15 +67,8 @@
                     }
                 }
             }
-            look();
-            if (VisitedLoc1 == false) {
-                score += 5;
-                document.getElementById("scorebox").value = "Score:" + score;
-                VisitedLoc1 = true;
-            } else {
-                document.getElementById("scorebox").value = "Score:" + score;
-            }
-        }
+            look();     
+        }		
         //South
         function btnSouth() {
             if (currentLoc === 2) {
@@ -87,14 +86,6 @@
                 }
             }
             look();
-            if (VisitedLoc2 == false) {
-
-                score += 5;
-                document.getElementById("scorebox").value = "Score:" + score;
-                VisitedLoc1 = true;
-            } else {
-                document.getElementById("scorebox").value = "Score:" + score;
-            }
         }
 
         //East
@@ -119,14 +110,6 @@
                 }
             }
             look();
-            if (VisitedLoc3 == false) {
-
-                score += 5;
-                document.getElementById("scorebox").value = "Score:" + score;
-                VisitedLoc1 = true;
-            } else {
-                document.getElementById("scorebox").value = "Score:" + score;
-            }
         }
         //West
         function btnWest() {
@@ -156,14 +139,6 @@
             }
 
             look();
-            if (VisitedLoc4 == false) {
-
-                score += 5;
-                document.getElementById("scorebox").value = "Score:" + score;
-                VisitedLoc1 = true;
-            } else {
-                document.getElementById("scorebox").value = "Score:" + score;
-            }
         }
 
 
@@ -196,11 +171,14 @@
                     break;
                 case 8:
                     desc = "Nothing but subs in here...";
+					break;
+				case 9:
+					desc = "Valid commands are N,S,E,W"
             }
-            displayMessage(desc);
+            UpdateDisplay(desc);
         }
 
-        function displayMessage(msg) {
+        function UpdateDisplay(msg) {
             var target = document.getElementById("maintext");
             target.value = msg + "\n\n" + target.value;
         }
