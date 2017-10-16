@@ -14,8 +14,8 @@
         //Score and location visits
         var score = 0;
         var currentLoc = 0;
-		
-		var VisitedLoc0 = 0;
+
+        var VisitedLoc0 = 0;
         var VisitedLoc1 = 0;
         var VisitedLoc2 = 0;
         var VisitedLoc3 = 0;
@@ -26,62 +26,84 @@
         function init() {
             look();
         }
-		function btnEnter_click() {
-			var userText = document.getElementById("txtCommand").value;
-			var response = "";
-		if (userText === "N") {
-			response = btnNorth()
-		} else {
-			if (userText === "S") {
-				response = btnSouth()
-		} else {
-			if (userText === "E") {
-				response = btnEast()
-		} else {
-			if (userText === "W") {
-				response = btnWest()
-		} else {
-			alert("Valid commands are N,S,E,W");
-		}
-		}
-		}
-		}
-		}
+
+        function btnEnter_click() {
+            var userText = document.getElementById("txtCommand").value;
+            var response = "";
+            if (userText === "N") {
+                response = btnNorth()
+            } else {
+                if (userText === "S") {
+                    response = btnSouth()
+                } else {
+                    if (userText === "E") {
+                        response = btnEast()
+                    } else {
+                        if (userText === "W") {
+                            response = btnWest()
+                        } else {
+                            alert("Valid commands are N,S,E,W");
+                        }
+                    }
+                }
+            }
+        }
 
         //North
         function btnNorth() {
             if (currentLoc === 0) {
                 currentLoc = 1;
                 look();
-				document.getElementById("btnEast").disabled= true;
-				document.getElementById("btnWest").disabled= true;
+                document.getElementById("btnEast").disabled = true;
+                document.getElementById("btnWest").disabled = true;
+                document.getElementById("btnSouth").disabled = false;
+                document.getElementById("btnNorth").disabled = false;
             } else {
                 if (currentLoc === 1) {
                     currentLoc = 2;
                     look();
-					document.getElementById("btnNorth").disabled=true;
+                    document.getElementById("btnEast").disabled = true;
+                    document.getElementById("btnWest").disabled = true;
+                    document.getElementById("btnSouth").disabled = false;
+                    document.getElementById("btnNorth").disabled = true;
                 } else {
                     if (currentLoc === 4) {
                         currentLoc = 0;
                         look();
+                        document.getElementById("btnEast").disabled = false;
+                        document.getElementById("btnWest").disabled = false;
+                        document.getElementById("btnSouth").disabled = false;
+                        document.getElementById("btnNorth").disabled = false;
                     }
                 }
             }
-            look();     
-        }		
+            look();
+        }
         //South
         function btnSouth() {
             if (currentLoc === 2) {
                 currentLoc = 1;
                 look();
+                document.getElementById("btnEast").disabled = true;
+                document.getElementById("btnWest").disabled = true;
+                document.getElementById("btnSouth").disabled = false;
+                document.getElementById("btnNorth").disabled = false;
             } else {
                 if (currentLoc === 1) {
                     currentLoc = 0;
                     look();
+                    document.getElementById("btnEast").disabled = false;
+                    document.getElementById("btnWest").disabled = false;
+                    document.getElementById("btnSouth").disabled = false;
+                    document.getElementById("btnNorth").disabled = false;
                 } else {
                     if (currentLoc === 0) {
                         currentLoc = 4;
                         look();
+                        document.getElementById("btnEast").disabled = true;
+                        document.getElementById("btnWest").disabled = true;
+                        document.getElementById("btnSouth").disabled = true;
+                        document.getElementById("btnNorth").disabled = false;
                     }
                 }
             }
@@ -93,18 +115,35 @@
             if (currentLoc === 0) {
                 currentLoc = 3;
                 look();
+                document.getElementById("btnEast").disabled = false;
+                document.getElementById("btnWest").disabled = false;
+                document.getElementById("btnSouth").disabled = true;
+                document.getElementById("btnNorth").disabled = true;
             } else {
                 if (currentLoc === 3) {
                     currentLoc = 7;
                     look();
+                    document.getElementById("btnEast").disabled = false;
+                    document.getElementById("btnWest").disabled = false;
+                    document.getElementById("btnSouth").disabled = true;
+                    document.getElementById("btnNorth").disabled = true;
                 } else {
                     if (currentLoc === 7) {
                         currentLoc = 8;
                         look();
+                        document.getElementById("btnEast").disabled = true;
+                        document.getElementById("btnWest").disabled = false;
+                        document.getElementById("btnSouth").disabled = true;
+                        document.getElementById("btnNorth").disabled = true;
                     } else {
                         if (currentLoc === 5) {
                             currentLoc = 0;
                             look();
+                            document.getElementById("btnEast").disabled = false;
+                            document.getElementById("btnWest").disabled = false;
+                            document.getElementById("btnSouth").disabled = false;
+                            document.getElementById("btnNorth").disabled = false;
+
                         }
                     }
                 }
@@ -116,22 +155,42 @@
             if (currentLoc === 0) {
                 currentLoc = 5;
                 look();
+                document.getElementById("btnEast").disabled = false;
+                document.getElementById("btnWest").disabled = false;
+                document.getElementById("btnSouth").disabled = true;
+                document.getElementById("btnNorth").disabled = true;
             } else {
                 if (currentLoc === 5) {
                     currentLoc = 6;
                     look();
+                    document.getElementById("btnEast").disabled = true;
+                    document.getElementById("btnWest").disabled = true;
+                    document.getElementById("btnSouth").disabled = true;
+                    document.getElementById("btnNorth").disabled = true;
                 } else {
                     if (currentLoc === 3) {
                         currentLoc = 0;
                         look();
+                        document.getElementById("btnEast").disabled = false;
+                        document.getElementById("btnWest").disabled = false;
+                        document.getElementById("btnSouth").disabled = false;
+                        document.getElementById("btnNorth").disabled = false;
                     } else {
                         if (currentLoc === 7) {
                             currentLoc = 3;
                             look();
+                            document.getElementById("btnEast").disabled = false;
+                            document.getElementById("btnWest").disabled = false;
+                            document.getElementById("btnSouth").disabled = true;
+                            document.getElementById("btnNorth").disabled = true;
                         } else {
                             if (currentLoc === 8) {
                                 currentLoc = 7;
                                 look();
+                                document.getElementById("btnEast").disabled = false;
+                                document.getElementById("btnWest").disabled = false;
+                                document.getElementById("btnSouth").disabled = true;
+                                document.getElementById("btnNorth").disabled = true;
                             }
                         }
                     }
@@ -171,9 +230,9 @@
                     break;
                 case 8:
                     desc = "Nothing but subs in here...";
-					break;
-				case 9:
-					desc = "Valid commands are N,S,E,W"
+                    break;
+                case 9:
+                    desc = "Valid commands are N,S,E,W"
             }
             UpdateDisplay(desc);
         }
@@ -210,10 +269,10 @@
     <input type="button" id="btnEast" name="btnEast" value="East" onclick="btnEast();" />
 
     <input type="button" id="btnWest" name="btnWest" value="West" onclick="btnWest();" />
-	
-	<input type="text" id="txtCommand" name="txtCommand">
-	<input type="button" value="enter" onclick="btnEnter_click();" />
-	
+
+    <input type="text" id="txtCommand" name="txtCommand">
+    <input type="button" value="enter" onclick="btnEnter_click();" />
+
 
     <p class="footer">
         Questions sent to <a href="mailto:krout.ian@gmail.com"> Ian Krout </a>
