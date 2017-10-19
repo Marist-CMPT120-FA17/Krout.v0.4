@@ -48,7 +48,44 @@
                 }
             }
         }
-
+		
+		function MainEntrance () {
+			var message = "You enter Donnelly Hall in a panic realizing your dog, Donnelly, has gotten loose and made his way to his favorite building. You must find him!";
+			UpdateDisplay(message);
+			}
+		function SecurityOffice () {
+			var message = "You are at security, they say they saw your dog but can't say where he is for sure since its a circular building...";
+			UpdateDisplay(message);
+			}
+		function CameraRoom () {
+			var message = " You rush to the back room to check the security cameras and see your dog running in circles";
+			UpdateDisplay(message);
+			}
+		function FashionLab () {
+			var message = " You are the fashion lab and see nothing but clothes.";
+			UpdateDisplay(message);
+			}
+		function OutsideBuilding () {
+			var message = "You leave the building. Try again.";
+			UpdateDisplay(message);
+			}
+		function ChemistryLab () {
+			var message = "You head down to the chemistry lab and hear barking";
+			UpdateDisplay(message);
+			}
+		function FoundDog () {
+			var message = "Donnelly! You found your dog, sitting by the bathroom.";
+			UpdateDisplay(message);
+			}
+		function DNCafe () {
+			var message = "You are at the DN Cafe, maybe Donnelly was attracted to the food?";
+			UpdateDisplay(message);
+			}
+		function SubLine () {
+			var message = "Nothing but subs in here...";
+			UpdateDisplay(message);
+			}
+		
         //North
         function btnNorth() {
             if (currentLoc === 0) {
@@ -205,41 +242,38 @@
             var desc = "";
             switch (currentLoc) {
                 case 0:
-                    desc = "You enter Donnelly Hall in a panic realizing your dog, Donnelly, has gotten loose and made his way to his favorite building. You must find him!";
+                    MainEntrance ();
                     break;
                 case 1:
-                    desc = "You are at security, they say they saw your dog but can't say where he is for sure since its a circular building...";
+                    SecurityOffice ();
                     break;
                 case 2:
-                    desc = " You rush to the back room to check the security cameras and see your dog running in circles";
+                    CameraRoom ();
                     break;
                 case 3:
-                    desc = " You are the fashion lab and see nothing but clothes.";
+                    FashionLab ();
                     break;
                 case 4:
-                    desc = "You leave the building. Try again.";
+					OutsideBuilding ();
                     break;
                 case 5:
-                    desc = "You head down to the chemistry lab and hear barking";
+                    ChemistryLab ();
                     break;
                 case 6:
-                    desc = "Donnelly! You found your dog, sitting by the bathroom.";
+                    FoundDog ();
                     break;
                 case 7:
-                    desc = "You are at the DN Cafe, maybe Donnelly was attracted to the food?";
+                    DNCafe ();
                     break;
                 case 8:
-                    desc = "Nothing but subs in here...";
+                    SubLine ();
                     break;
-                case 9:
-                    desc = "Valid commands are N,S,E,W"
             }
-            UpdateDisplay(desc);
         }
 
         function UpdateDisplay(msg) {
             var target = document.getElementById("maintext");
-            target.value = msg + "\n\n" + target.value;
+            target.value = msg + "\n\n";
         }
     </script>
     <style>
